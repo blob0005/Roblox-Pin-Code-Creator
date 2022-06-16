@@ -33,13 +33,15 @@ while True:
     except:
         print("Cookie Invalid")
 
-token = input("Enter X Crsf Token (If Not Valid Program Will Not Work): ")
+
 
 pin = input("What Shall Pin Be: ")
 
 req = requests.session()
 req.cookies.set(".ROBLOSECURITY", str(cookie), domain="roblox.com")
 url = "https://auth.roblox.com/v1/account/pin"
+lol = req.post("https://auth.roblox.com/v1/account/pin/unlock")
+token = str(lol.headers["x-csrf-token"])
 headers = {
     "x-csrf-token": token
 }
